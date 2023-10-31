@@ -18,9 +18,12 @@
         
         Icon="Resources/icon.ico"
         WindowStartupLocation="CenterScreen"
+        
         >
 
     <Grid>
-        
+        <StackPanel>
+          
+        </StackPanel>
     </Grid>
 </Window>
