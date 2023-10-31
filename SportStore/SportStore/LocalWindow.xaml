@@ -23,7 +23,13 @@
 
     <Grid>
         <StackPanel>
-          
+            <Image Source="Resources/logo.png" Height="100" Width="100"/>
+        </StackPanel>
+
+        
+        <StackPanel>
+            <TextBlock Margin="1" Height="20" Width="135" Text="Логин"/>
+            <TextBox Name="LoginBox" Margin="1" Height="20"/>
         </StackPanel>
     </Grid>
 </Window>
