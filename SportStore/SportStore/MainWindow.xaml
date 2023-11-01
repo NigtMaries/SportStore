@@ -48,9 +48,9 @@
         </Grid>
         
             <ListView Grid.Row ="1"
-	        x:Name="productlistView"
-	        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            HorizontalContentAlignment="Center">
+	            x:Name="productlistView"
+	            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                HorizontalContentAlignment="Center">
 
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -61,16 +61,109 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="300">
+                    <StackPanel Width="300">
+                        <TextBlock Text="{Binding Name, StringFormat=Название: {0}}"   
+				                VerticalAlignment="Center"
+				                TextAlignment="Center"
+				                TextWrapping="Wrap"
+				                HorizontalAlignment="Center"
+				                Margin="0"
+                                FontSize="15"/>
+                        <Border BorderBrush="#FF498C51" BorderThickness="2">
+                            <Image 
+			                       HorizontalAlignment="Center"
+			                       Height="200"
+			                       Width="200"
+                                               ToolTip="{Binding Description}">
 
-                            <TextBlock Text="{Binding Name}"
-				  VerticalAlignment="Center"
-				  TextAlignment="Center"
-				  TextWrapping="Wrap"
-				  HorizontalAlignment="Center"
-				  Margin="0"
-                                  FontSize="15"/>
-                        </StackPanel>
+                                <Image.Source>
+                                    <BitmapImage UriSource = "{Binding ImagePath}" CacheOption="OnLoad">
+                                    </BitmapImage>
+                                </Image.Source>
+                            </Image>
+                        </Border>
+                        <TextBlock Text="{Binding ArticleNumber, StringFormat=Артикль: {0}}"
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Category, StringFormat=Категория: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Manufacturer, StringFormat=Производитель: {0}}" 
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding DiscountAmount, StringFormat=Скидка: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding QuantityInStock, StringFormat=Кол-во на складе: {0}}"  
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Status, StringFormat=Статус: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding MaxDiscount, StringFormat=Максимальная скидка: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Supplier, StringFormat=Поставщик: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Unit, StringFormat=Ед.Измерения: {0}}"   
+        VerticalAlignment="Center"
+        TextAlignment="Center"
+        TextWrapping="Wrap"
+        HorizontalAlignment="Left"
+        Margin="0"
+        FontSize="15"/>
+                        <TextBlock Text="{Binding Description, StringFormat=Описание: {0}}"
+VerticalAlignment="Center"
+TextAlignment="Center"
+TextWrapping="Wrap"
+HorizontalAlignment="Left"
+Margin="0"
+FontSize="15"/>
+
+
+
+
+
+
+
+
+
+
+
+                    </StackPanel>
 
                     </DataTemplate>
                 </ListView.ItemTemplate>
