@@ -31,5 +31,15 @@ namespace SportStore
             
             }
         }
+        public MainWindow(User user)
+        {
+            InitializeComponent();
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                User user1 = db.Users.FirstOrDefault();
+                MessageBox.Show("База данных подключена");
+
+            }
+        }
     }
 }
