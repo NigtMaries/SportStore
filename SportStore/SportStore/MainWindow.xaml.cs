@@ -24,22 +24,34 @@ namespace SportStore
         public MainWindow()
         {
             InitializeComponent();
-            using (SportStoreContext db = new SportStoreContext()) 
+            using (SportStoreContext db = new SportStoreContext())
             {
                 User user = db.Users.FirstOrDefault();
                 MessageBox.Show("База данных подключена");
-            
+
             }
         }
         public MainWindow(User user)
         {
             InitializeComponent();
+
             using (SportStoreContext db = new SportStoreContext())
             {
-                User user1 = db.Users.FirstOrDefault();
-                MessageBox.Show("База данных подключена");
+                if (user != null)
+                {
+                    MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
+                }
+                else
+                {
+                    MessageBox.Show("Гость");
+                }
 
             }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

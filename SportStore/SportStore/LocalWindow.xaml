@@ -61,7 +61,13 @@
             </StackPanel>
 
             <StackPanel>
-                <Button Margin="0 10 0 0" Height="20" Content="Гость"/> 
+                <Button 
+                        Name="guestButton"
+                        Margin="0 10 0 0"
+                        Height="20"
+                        IsDefault="True"
+                        Content="Гость"
+                        Click="guestButtonClick"/> 
             </StackPanel>
         </StackPanel>
     </Grid>
