@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SportStore.Infrastructure;
 
 namespace SportStore
 {
@@ -28,9 +29,11 @@ namespace SportStore
             {
                 User user = db.Users.FirstOrDefault();
                 MessageBox.Show("База данных подключена");
+                statusUser.Text = user.RoleNavigation.Name;
 
             }
         }
+
         public MainWindow(User user)
         {
             InitializeComponent();
@@ -39,19 +42,25 @@ namespace SportStore
             {
                 if (user != null)
                 {
+                    statusUser.Text = user.RoleNavigation.Name;
                     MessageBox.Show($"{user.RoleNavigation.Name}: {user.Surname} {user.Name} {user.Patronymic}. \r\t");
                 }
                 else
                 {
+                    statusUser.Text = "Гость";
                     MessageBox.Show("Гость");
                 }
 
+                productlistView.ItemsSource = db.Products.ToList();
             }
+
         }
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            new LocalWindow().Show();
+            this.Close();
         }
     }
 }
