@@ -35,12 +35,19 @@
                           SelectionChanged="sortUserComboBox_SelectionChanged"/>
 
             </StackPanel>
-            <StackPanel Margin="158,0,0,0" Grid.Column="1" VerticalAlignment="Center"
+            <StackPanel Margin="294,0,0,0" Grid.Column="1" VerticalAlignment="Center"
                         HorizontalAlignment="Left">
                 <TextBlock Margin="1" Text="Фильтр" Height="20" Width="100"/>
                 <ComboBox Margin="1" x:Name="filterUserComboBox" Height="20" Width="150" 
                           SelectionChanged="filterUserComboBox_SelectionChanged"/>
 
+            </StackPanel>
+            
+            <StackPanel Margin="567,0,0,0" Grid.Column="1" VerticalAlignment="Center"
+                        HorizontalAlignment="Left">
+                <TextBlock Margin="1" Text="Поиск" Height="20" Width="100"/>
+                <TextBox Margin="1" Name="searchBox" Width="100" Height="20"
+                         TextChanged="searchBox_TextChanged" />
             </StackPanel>
 
             <StackPanel 
