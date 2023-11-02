@@ -69,6 +69,56 @@ namespace SportStore
             
         }
 
+        private void UpdateProducts()
+        {
+            using (SportStoreContext db = new SportStoreContext())
+            {
+
+                var currentProducts = db.Products.ToList();
+                productlistView.ItemsSource = currentProducts;
+
+                //Сортировка
+                if (sortUserComboBox.SelectedIndex != -1)
+                {
+                    if (sortUserComboBox.SelectedValue == "По убыванию цены")
+                    {
+                        currentProducts = currentProducts.OrderByDescending(u => u.Cost).ToList();
+
+                    }
+
+                    if (sortUserComboBox.SelectedValue == "По возрастанию цены")
+                    {
+                        currentProducts = currentProducts.OrderBy(u => u.Cost).ToList();
+
+                    }
+                }
+
+
+                // Фильтрация
+                if (filterUserComboBox.SelectedIndex != -1)
+                {
+                    if (db.Products.Select(u => u.Manufacturer).Distinct().ToList().Contains(filterUserComboBox.SelectedValue))
+                    {
+                        currentProducts = currentProducts.Where(u => u.Manufacturer == filterUserComboBox.SelectedValue.ToString()).ToList();
+                    }
+                    else
+                    {
+                        currentProducts = currentProducts.ToList();
+                    }
+                }
+
+                // Поиск
+
+                if (searchBox.Text.Length > 0)
+                {
+
+                    currentProducts = currentProducts.Where(u => u.Name.Contains(searchBox.Text) || u.Description.Contains(searchBox.Text)).ToList();
+
+                }
+
+                productlistView.ItemsSource = currentProducts;
+            }
+        }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
