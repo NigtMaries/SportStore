@@ -61,6 +61,8 @@ namespace SportStore
                     MessageBox.Show("Гость");
                 }
 
+                countProducts.Text = $"Количество: {db.Products.Count()}";
+
                 productlistView.ItemsSource = db.Products.ToList();
                 sortUserComboBox.ItemsSource = sortList;
                 sortUserComboBox.SelectedIndex = 0;
@@ -116,7 +118,15 @@ namespace SportStore
 
                 }
 
+                
+                    
+
                 productlistView.ItemsSource = currentProducts;
+                
+                countProducts.Text = $"Количество: {currentProducts.Count()} из {db.Products.ToList().Count()}";
+
+                //количество товаров 
+
             }
         }
 

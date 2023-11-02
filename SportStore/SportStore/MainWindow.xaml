@@ -35,21 +35,25 @@
                           SelectionChanged="sortUserComboBox_SelectionChanged"/>
 
             </StackPanel>
-            <StackPanel Margin="294,0,0,0" Grid.Column="1" VerticalAlignment="Center"
+            <StackPanel Margin="227,0,0,0" Grid.Column="1" VerticalAlignment="Center"
                         HorizontalAlignment="Left">
                 <TextBlock Margin="1" Text="Фильтр" Height="20" Width="100"/>
                 <ComboBox Margin="1" x:Name="filterUserComboBox" Height="20" Width="150" 
                           SelectionChanged="filterUserComboBox_SelectionChanged"/>
 
             </StackPanel>
-            
-            <StackPanel Margin="567,0,0,0" Grid.Column="1" VerticalAlignment="Center"
-                        HorizontalAlignment="Left">
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
                 <TextBlock Margin="1" Text="Поиск" Height="20" Width="100"/>
                 <TextBox Margin="1" Name="searchBox" Width="100" Height="20"
                          TextChanged="searchBox_TextChanged" />
             </StackPanel>
 
+            <StackPanel Margin="618,0,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Grid.Column="1"/>
             <StackPanel 
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"
@@ -68,8 +72,18 @@
 
             </StackPanel>
 
+
+
         </Grid>
 
+        <StackPanel Margin="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Grid.Column="4"/>
+        <TextBlock Margin="797,52,253,65"
+               TextAlignment="Left"
+               x:Name="countProducts"
+               Text="Количество: "/>
 
         <ListView Grid.Row ="1"
 	            x:Name="productlistView"
