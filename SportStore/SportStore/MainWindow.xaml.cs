@@ -24,7 +24,9 @@ namespace SportStore
     {
         public MainWindow()
         {
+
             InitializeComponent();
+
             using (SportStoreContext db = new SportStoreContext())
             {
                 User user = db.Users.FirstOrDefault();
@@ -38,8 +40,11 @@ namespace SportStore
         {
             InitializeComponent();
 
+            List<string> sortList = new List<string>() { "По возрастанию цены", "По убыванию цены" };
+
             using (SportStoreContext db = new SportStoreContext())
             {
+                
                 if (user != null)
                 {
                     statusUser.Text = user.RoleNavigation.Name;
@@ -52,8 +57,10 @@ namespace SportStore
                 }
 
                 productlistView.ItemsSource = db.Products.ToList();
+                sortUserComboBox.ItemsSource = sortList;
+                sortUserComboBox.SelectedIndex = 0;
             }
-
+            
         }
 
 
@@ -61,6 +68,22 @@ namespace SportStore
         {
             new LocalWindow().Show();
             this.Close();
+        }
+
+        private void sortUserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (SportStoreContext db = new SportStoreContext())
+            {
+                if (sortUserComboBox.SelectedValue == "По убыванию цены")
+                {
+                    productlistView.ItemsSource = db.Products.OrderByDescending(u => u.Cost).ToList();
+                }
+
+                if (sortUserComboBox.SelectedValue == "По возрастанию цены")
+                {
+                    productlistView.ItemsSource = db.Products.OrderBy(u => u.Cost).ToList();
+                }
+            }
         }
     }
 }
