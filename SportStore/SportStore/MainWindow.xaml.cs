@@ -10,7 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
+
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SportStore.Infrastructure;
@@ -27,6 +27,7 @@ namespace SportStore
 
             InitializeComponent();
 
+            
             using (SportStoreContext db = new SportStoreContext())
             {
                 User user = db.Users.FirstOrDefault();
@@ -50,6 +51,7 @@ namespace SportStore
                 filtertList.Insert(0, "Все производители");
                 filterUserComboBox.ItemsSource = filtertList.ToList();
 
+                
                 if (user != null)
                 {
                     statusUser.Text = user.RoleNavigation.Name;
@@ -64,8 +66,8 @@ namespace SportStore
                 countProducts.Text = $"Количество: {db.Products.Count()}";
 
                 productlistView.ItemsSource = db.Products.ToList();
-                sortUserComboBox.ItemsSource = sortList;
-                sortUserComboBox.SelectedIndex = 0;
+                sortUserComboBox.ItemsSource = sortList.ToList();
+                
             }
 
             
@@ -165,7 +167,7 @@ namespace SportStore
                         productlistView.ItemsSource = db.Products.ToList();
                     }
                 }
-            }
+        }
 
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -185,6 +187,20 @@ namespace SportStore
             searchBox.Text = "";
             sortUserComboBox.SelectedIndex = -1;
             filterUserComboBox.SelectedIndex = -1;
+        }
+
+        private void addUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            new AddProductWindow().ShowDialog();
+        }
+
+
+        
+        private void EditProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Product p = (sender as ListView).SelectedItem as Product;
+            new AddProductWindow(p).ShowDialog();
+
         }
     }
 }
